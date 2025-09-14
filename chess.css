@@ -1,0 +1,65 @@
+/* Reset default styles */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: 'Segoe UI Symbol', 'Noto Sans Symbols', 'Arial Unicode MS', sans-serif;
+}
+
+.board {
+    display: grid;
+    grid-template-rows: repeat(8, 60px);
+    grid-template-columns: repeat(8, 60px);
+    border: 3px solid #333;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+
+/* Let each .row pass its children to the grid */
+
+.row {
+    display: contents;
+}
+
+
+/* Color alternating light and dark squares */
+
+.row.first span:nth-child(odd),
+.row.second span:nth-child(even) {
+    background-color: #f0d9b5;
+    /* light */
+}
+
+.row.first span:nth-child(even),
+.row.second span:nth-child(odd) {
+    background-color: #b58863;
+    /* dark */
+}
+
+span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 36px;
+    width: 60px;
+    height: 60px;
+    cursor: default;
+    user-select: none;
+    transition: background-color 0.2s;
+}
+
+
+/* Optional: highlight on hover */
+
+span:hover {
+    background-color: rgba(255, 255, 0, 0.3);
+}
